@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const exercise = require('./routes/Exercise');
+const users = require('./routes/User');
 
 require('dotenv').config();
 
@@ -22,8 +23,6 @@ dataBase.once('open', () => {
 });
 
 dataBase.on('error', console.error.bind(console, 'Error'));
-
-const users = require('./routes/User');
 
 app.use('/users', users);
 app.use('/exercises', exercise);
