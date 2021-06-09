@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const ExerciseSchema = require('../model/ExerciseSchema');
 
-router.route('/').get((res) => {
+router.route('/').get((req, res) => {
   ExerciseSchema.find()
     .then((response) => res.json(response))
     .catch((err) => res.status(400).json(err));
@@ -35,10 +35,7 @@ router.route('/:id').patch((req, res) => {
   const id = req.params.id;
   ExerciseSchema.findById(id)
     .then((response) => {
-      (response.user = req.body.user),
-        (response.description = req.body.description),
-        (response.duration = Number(req.body.duration)),
-        (response.date = Date.parse(req.body.date));
+      (response.user = req.body.user), (response.description = req.body.description), (response.duration = Number(req.body.duration)), (response.date = Date.parse(req.body.date));
 
       response
         .save()

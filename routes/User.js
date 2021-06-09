@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const UserSchema = require('../model/UserSchema');
 
-router.route('/').get((res) => {
+router.route('/').get((req, res) => {
   UserSchema.find()
     .then((users) => res.json(users))
     .catch((err) => res.status(400).json('Err:' + err));
